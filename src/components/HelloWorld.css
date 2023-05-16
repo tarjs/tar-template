@@ -24,6 +24,12 @@ h1 {
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #3178c6aa);
 }
+.logo.tar {
+  height: 8em;
+}
+.logo.tar:hover {
+  filter: drop-shadow(0 0 2em #333);
+}
 
 .card {
   padding: 2em;

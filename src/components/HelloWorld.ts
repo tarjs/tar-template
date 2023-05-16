@@ -1,4 +1,5 @@
 import typescriptLogo from '../typescript.svg'
+import tarLogo from '../tar.svg'
 import viteLogo from '/vite.svg'
 import style from './HelloWorld.css?inline'
 import { createFn, createObserver } from 'tar-util'
@@ -11,15 +12,13 @@ export default class HelloWorld extends HTMLElement {
   constructor() {
     super()
     this.render()
-    this.data = {
+    const count = () => {
+      this.data.count = this.data.count + 1
+    }
+    this.data = createObserver({
       count: 1
-    }
-    const data = this.data
-    function count() {
-      data.count = data.count + 1
-    }
-    createObserver(data, (this.shadow?.querySelector('.card') as HTMLElement))
-    createFn((this.shadow?.querySelector('.card') as HTMLElement), count)
+    }, (this.shadow?.querySelector('.card') as HTMLElement))
+    createFn((this.shadow?.querySelector('.card') as HTMLElement), { count })
   }
   render() {
     const styleDom = document.createElement('style')
@@ -33,9 +32,12 @@ export default class HelloWorld extends HTMLElement {
       <a href="https://www.typescriptlang.org/" target="_blank">
         <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
       </a>
-      <h1>Vite + TypeScript</h1>
+      <a href="https://github.com/tarjs/TarUtil" target="_blank">
+        <img src="${tarLogo}" class="logo tar" alt="tarjs logo" />
+      </a>
+      <h1>Vite + TypeScript + TarUtil</h1>
       <div class="card">
-        <button id="counter" type="button" data-bind="count" $click="count"></button>
+        <button id="counter" type="button" data-bind="count" $click="count">count: $t</button>
       </div>
       <p class="read-the-docs">
         Click on the Vite and TypeScript logos to learn more

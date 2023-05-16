@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   tar-util:
-    specifier: ^1.0.4
-    version: 1.0.4
+    specifier: ^1.0.5
+    version: 1.0.5
 
 devDependencies:
   typescript:
@@ -283,8 +283,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /tar-util@1.0.4:
-    resolution: {integrity: sha512-yc2UGL1r69KatBltKXLJ7prDKCzkPx2/ofxFjnLn4wYYe5HPloJED/ovWUgB1b2zSNHCPe1QlBqF5+F3A9UO8A==}
+  /tar-util@1.0.5:
+    resolution: {integrity: sha512-Fmjf89H0Jt1t+rJZtlA89sdlmjiyPiZ077/5yTQhiXoKUKc7fe0YstyzuW2fF3Da6nVBoj1nqIqR9SVFxtmA8g==}
     dev: false
 
   /typescript@5.0.2:
