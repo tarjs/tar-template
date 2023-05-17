@@ -2,7 +2,7 @@ import typescriptLogo from '../typescript.svg'
 import tarLogo from '../tar.svg'
 import viteLogo from '/vite.svg'
 import style from './HelloWorld.css?inline'
-import { createFn, createObserver } from 'tar-util'
+import { createFn, createObserver, createStyle } from 'tar-util'
 
 export default class HelloWorld extends HTMLElement {
   private shadow: ShadowRoot | undefined
@@ -12,17 +12,18 @@ export default class HelloWorld extends HTMLElement {
   constructor() {
     super()
     this.render()
+    createStyle(this.shadow!, style)
+
     const count = () => {
       this.data.count = this.data.count + 1
     }
+    
     this.data = createObserver({
       count: 1
-    }, (this.shadow?.querySelector('.card') as HTMLElement))
-    createFn((this.shadow?.querySelector('.card') as HTMLElement), { count })
+    }, this.shadow)
+    createFn(this.shadow!, { count })
   }
   render() {
-    const styleDom = document.createElement('style')
-    styleDom.innerHTML = style
     this.shadow = this.attachShadow({ mode: 'closed' })
     this.shadow.innerHTML = `
     <div id="hello-world">
@@ -44,6 +45,5 @@ export default class HelloWorld extends HTMLElement {
       </p>
     </div>
     `
-    this.shadow.appendChild(styleDom)
   }
 }
